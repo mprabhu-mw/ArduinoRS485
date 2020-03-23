@@ -22,11 +22,13 @@
 
 #include <Arduino.h>
 
+#ifndef _RTT_RS485_INUSE_
 #ifdef PIN_SERIAL1_TX
 #define RS485_DEFAULT_TX_PIN PIN_SERIAL1_TX
 #else
 #define RS485_DEFAULT_TX_PIN 1 
 #endif
+
 
 #ifdef __AVR__
 #define RS485_DEFAULT_DE_PIN 2
@@ -35,6 +37,12 @@
 #define RS485_DEFAULT_DE_PIN A6
 #define RS485_DEFAULT_RE_PIN A5
 #endif
+
+#define RS485_DEFAULT_SERIAL  SERIAL_PORT_HARDWARE
+
+#endif
+
+
 
 class RS485Class : public Stream {
   public:
